@@ -6,13 +6,13 @@ import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.server.ResponseStatusException
-import ru.nb.medalist.msmuser.mq.MessageFuncActions
+//import ru.nb.medalist.msmuser.mq.MessageFuncActions
 import java.util.*
 
 @RestController
 @RequestMapping("auth")
 class AuthController(
-	private val messageFuncActions: MessageFuncActions
+//	private val messageFuncActions: MessageFuncActions
 ) {
 
 	@PostMapping("/uuid")
@@ -21,8 +21,8 @@ class AuthController(
 		else throw ResponseStatusException(HttpStatus.BAD_REQUEST, "Bad request")
 	}
 
-	@PostMapping("send")
+/*	@PostMapping("send")
 	fun sendMessage(@RequestBody id: Long) {
 		messageFuncActions.sendNewUserMessage(id = id)
-	}
+	}*/
 }

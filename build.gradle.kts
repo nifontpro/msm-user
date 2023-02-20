@@ -20,23 +20,31 @@ extra["springCloudVersion"] = "2022.0.1"
 extra["keycloakVersion"] = "18.0.0"
 
 dependencies {
-	implementation("org.springframework.boot:spring-boot-starter")
+
+	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+	implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
 
-	implementation("org.springframework.boot:spring-boot-starter-webflux")
-	implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client") {
-		exclude(group = "java.ws.rs", module = "jsr311-api") // for keycloak
-	}
-	implementation("org.springframework.cloud:spring-cloud-starter-config")
-	implementation ("org.springframework.cloud:spring-cloud-starter-stream-rabbit:+")
+	implementation("org.springframework.boot:spring-boot-starter")
 
 	implementation("org.springframework.boot:spring-boot-starter-oauth2-resource-server")
+//	implementation("org.springframework.boot:spring-boot-starter-webflux")
+	implementation("org.springframework.boot:spring-boot-starter-web")
+	implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")/* {
+		exclude(group = "java.ws.rs", module = "jsr311-api") // for keycloak
+	}*/
+	implementation("org.springframework.cloud:spring-cloud-starter-config")
+//	implementation ("org.springframework.cloud:spring-cloud-starter-stream-rabbit:+")
+
+//	implementation("org.keycloak:keycloak-admin-client:${property("keycloakVersion")}")
 	implementation("org.keycloak:keycloak-admin-client:18.0.0")
 
 //	testImplementation("org.springframework.amqp:spring-rabbit-test")
 
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	testImplementation("io.projectreactor:reactor-test")
 }
 
 dependencyManagement {

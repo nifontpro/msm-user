@@ -1,4 +1,5 @@
 package ru.nb.medalist.msmuser.mq
+/*
 
 import org.springframework.messaging.support.MessageBuilder
 import org.springframework.stereotype.Service
@@ -20,4 +21,4 @@ class MessageFuncActions(
 		messageFunc.innerBus.emitNext(MessageBuilder.withPayload(id).build(), Sinks.EmitFailureHandler.FAIL_FAST)
 		println("Message sent: $id")
 	}
-}
+}*/

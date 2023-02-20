@@ -10,7 +10,7 @@ import org.keycloak.representations.idm.RoleRepresentation
 import org.keycloak.representations.idm.UserRepresentation
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Service
-import ru.nb.medalist.msmuser.keycloak.dto.UserDto
+import ru.nb.medalist.msmuser.dto.UserDto
 import javax.annotation.PostConstruct
 import javax.ws.rs.core.Response
 
@@ -106,21 +106,21 @@ class KeycloakUtils(
 
 	// поиск пользователя по любым атрибутам (вхождение текста)
 	fun searchKeycloakUsers(text: String?): List<UserRepresentation> {
-
-		// получаем пользователя
 		return usersResource?.searchByAttributes(text) ?: emptyList()
 	}
 
 	// добавление роли пользователю
-	fun addRoles(userId: String?, roles: List<String?>) {
+	fun addRoles(userId: String?, roles: List<String>) {
 
 		// список доступных ролей в Realm
-		val kcRoles: MutableList<RoleRepresentation> = ArrayList()
+		val kcRoles = mutableListOf<RoleRepresentation>()
 
 		// преобразуем тексты в спец. объекты RoleRepresentation, который понятен для KC
 		for (role in roles) {
 			realmResource?.let {
 				val roleRep = it.roles()[role].toRepresentation()
+//				val roleRepresentation = RoleRepresentation()
+//				roleRepresentation.name = role
 				kcRoles.add(roleRep)
 			}
 		}
