@@ -11,6 +11,10 @@ import ru.nb.medalist.msmuser.keycloak.KeycloakUtils
 //import ru.nb.medalist.msmuser.mq.MessageFuncActions
 import java.util.*
 
+data class Str(
+	val data: String = ""
+)
+
 @RestController
 @RequestMapping("admin")
 class AdminController(
@@ -19,8 +23,8 @@ class AdminController(
 ) {
 
 	@GetMapping("info")
-	suspend fun info(): String {
-		return "Test msm-user/admin/user: OK"
+	suspend fun info(): Str {
+		return Str("Test msm-user/admin/user: OK")
 	}
 
 	@PostMapping("/uuid")
