@@ -1,4 +1,4 @@
-package ru.nb.medalist.msmuser.keycloak
+package ru.nb.medalist.msmuser.security
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration

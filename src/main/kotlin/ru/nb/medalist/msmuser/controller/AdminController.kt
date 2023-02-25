@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.server.ResponseStatusException
 import ru.nb.medalist.msmuser.dto.UserDto
-import ru.nb.medalist.msmuser.keycloak.KeycloakUtils
+import ru.nb.medalist.msmuser.security.KeycloakUtils
 //import ru.nb.medalist.msmuser.mq.MessageFuncActions
 import java.util.*
 
@@ -17,14 +17,21 @@ data class Str(
 
 @RestController
 @RequestMapping("admin")
+//@CrossOrigin
 class AdminController(
 //	private val messageFuncActions: MessageFuncActions,
 	private val keycloakUtils: KeycloakUtils
 ) {
 
-	@GetMapping("info")
+	@PostMapping("info")
 	suspend fun info(): Str {
 		return Str("Test msm-user/admin/user: OK")
+	}
+
+	// all
+	@GetMapping("test")
+	suspend fun test(): Str {
+		return Str("Test: OK")
 	}
 
 	@PostMapping("/uuid")

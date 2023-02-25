@@ -1,4 +1,4 @@
-package ru.nb.medalist.msmuser.keycloak
+package ru.nb.medalist.msmuser.security
 
 import org.keycloak.OAuth2Constants
 import org.keycloak.admin.client.Keycloak

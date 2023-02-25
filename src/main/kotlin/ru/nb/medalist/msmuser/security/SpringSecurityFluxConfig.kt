@@ -1,4 +1,4 @@
-package ru.nb.medalist.msmuser.keycloak
+package ru.nb.medalist.msmuser.security
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -9,13 +9,8 @@ import org.springframework.security.config.annotation.web.reactive.EnableWebFlux
 import org.springframework.security.config.web.server.ServerHttpSecurity
 import org.springframework.security.oauth2.jwt.Jwt
 import org.springframework.security.web.server.SecurityWebFilterChain
-import org.springframework.web.cors.CorsConfiguration
-import org.springframework.web.cors.reactive.CorsConfigurationSource
-import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource
 import reactor.core.publisher.Mono
-
-
-// https://www.baeldung.com/spring-security-5-reactive
+import ru.nb.medalist.msmuser.exception.OAuth2FluxExceptionHandler
 
 @Configuration
 @EnableWebFluxSecurity
@@ -29,30 +24,34 @@ class SpringSecurityFluxConfig {
 	): SecurityWebFilterChain {
 
 		http.authorizeExchange()
-			.pathMatchers("/admin/info").permitAll()
+//			.pathMatchers("/admin/test").permitAll()
 			.pathMatchers("/user/**").hasRole("user")
 			.pathMatchers("/admin/**").hasRole("admin")
 			.anyExchange().authenticated()
 			.and()
 			.csrf().disable()
-			.cors() // Разрешает запросы типа OPTIONS
-			.and()
+//			.cors() // Разрешает запросы типа OPTIONS
+//			.and()
 			.oauth2ResourceServer()
 			.jwt()
 			.jwtAuthenticationConverter(jwtAuthenticationConverter)
+			.and()
+			.authenticationEntryPoint(OAuth2FluxExceptionHandler())
 
 		return http.build()
 	}
 
-	@Bean
-	fun corsConfigurationSource(): CorsConfigurationSource? {
-		val configuration = CorsConfiguration()
-		configuration.allowedOrigins = listOf("*")
-		configuration.allowedHeaders = listOf("*")
-		configuration.allowedMethods = listOf("*")
-		val source = UrlBasedCorsConfigurationSource()
-		source.registerCorsConfiguration("/**", configuration)
-		return source
-	}
+//	@Bean
+//	fun corsConfigurationSource(): CorsWebFilter {
+//		val configuration = CorsConfiguration().apply {
+//			allowedOrigins = listOf("*")
+//			allowedHeaders = listOf("*")
+//			allowedMethods = listOf("*")
+//		}
+//		val source = UrlBasedCorsConfigurationSource().apply {
+//			registerCorsConfiguration("/**", configuration)
+//		}
+//		return CorsWebFilter(source)
+//	}
 
 }

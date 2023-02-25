@@ -1,4 +1,4 @@
-package ru.nb.medalist.msmuser.keycloak
+package ru.nb.medalist.msmuser.security
 
 import org.springframework.core.convert.converter.Converter
 import org.springframework.security.core.GrantedAuthority
@@ -6,6 +6,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.oauth2.jwt.Jwt
 
 // класс конвертер из данных JWT в роли spring security
+@Suppress("unused")
 class KCRoleConverter : Converter<Jwt, Collection<GrantedAuthority>> {
 
 	@Suppress("UNCHECKED_CAST")
