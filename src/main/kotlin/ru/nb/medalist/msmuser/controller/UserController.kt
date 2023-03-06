@@ -1,13 +1,9 @@
 package ru.nb.medalist.msmuser.controller
 
-import org.springframework.http.HttpStatus
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
-import org.springframework.web.server.ResponseStatusException
 //import ru.nb.medalist.msmuser.mq.MessageFuncActions
+import org.springframework.http.HttpStatus
+import org.springframework.web.bind.annotation.*
+import org.springframework.web.server.ResponseStatusException
 import java.util.*
 
 @RestController
@@ -23,12 +19,16 @@ class UserController(
 	}
 
 	@GetMapping("data")
-	fun getData(): String {
-		return "user data valid"
+	fun getData(): RS {
+		return RS(res = "User data valid, body:")
 	}
 
-/*	@PostMapping("send")
-	fun sendMessage(@RequestBody id: Long) {
-		messageFuncActions.sendNewUserMessage(id = id)
-	}*/
+	/*	@PostMapping("send")
+		fun sendMessage(@RequestBody id: Long) {
+			messageFuncActions.sendNewUserMessage(id = id)
+		}*/
 }
+
+data class RS(
+	val res: String
+)
