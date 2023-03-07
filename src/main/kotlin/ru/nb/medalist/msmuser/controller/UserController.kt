@@ -18,9 +18,15 @@ class UserController(
 		else throw ResponseStatusException(HttpStatus.BAD_REQUEST, "Bad request")
 	}
 
-	@GetMapping("data")
-	fun getData(): RS {
-		return RS(res = "User data valid, body:")
+	var x = 0
+
+	@PostMapping("data")
+	suspend fun getData(
+		@RequestBody body: RS? = null
+	): RS {
+		x++
+		return if (x % 3 == 0) throw ResponseStatusException(HttpStatus.FORBIDDEN, "AT timeout")
+		else RS(res = "User data valid, body: ${body?.res}")
 	}
 
 	/*	@PostMapping("send")
