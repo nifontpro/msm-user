@@ -25,7 +25,7 @@ class UserController(
 		@RequestBody body: RS? = null
 	): RS {
 		x++
-		return if (x % 3 == 0) throw ResponseStatusException(HttpStatus.FORBIDDEN, "AT timeout")
+		return if (x % 3 == 0) throw ResponseStatusException(HttpStatus.UNAUTHORIZED, "AT timeout")
 		else RS(res = "User data valid, body: ${body?.res}")
 	}
 

@@ -10,7 +10,6 @@ import org.springframework.security.config.web.server.ServerHttpSecurity
 import org.springframework.security.oauth2.jwt.Jwt
 import org.springframework.security.web.server.SecurityWebFilterChain
 import reactor.core.publisher.Mono
-import ru.nb.medalist.msmuser.exception.OAuth2FluxExceptionHandler
 
 @Configuration
 @EnableWebFluxSecurity
@@ -35,8 +34,8 @@ class SpringSecurityFluxConfig {
 			.oauth2ResourceServer()
 			.jwt()
 			.jwtAuthenticationConverter(jwtAuthenticationConverter)
-			.and()
-			.authenticationEntryPoint(OAuth2FluxExceptionHandler())
+//			.and()
+//			.authenticationEntryPoint(OAuth2FluxExceptionHandler())
 
 		return http.build()
 	}

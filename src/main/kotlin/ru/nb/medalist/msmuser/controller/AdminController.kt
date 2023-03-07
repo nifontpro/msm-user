@@ -23,6 +23,23 @@ class AdminController(
 	private val keycloakUtils: KeycloakUtils
 ) {
 
+	var x = 0
+
+	@PostMapping("data")
+	suspend fun getData(
+		@RequestBody body: RS? = null
+	): RS {
+		x++
+		return if (x % 3 == 0) throw ResponseStatusException(HttpStatus.FORBIDDEN, "AT timeout")
+		else RS(res = "Admin data valid, body: ${body?.res}")
+	}
+
+	/*	@PostMapping("send")
+		fun sendMessage(@RequestBody id: Long) {
+			messageFuncActions.sendNewUserMessage(id = id)
+		}*/
+
+
 	@PostMapping("info")
 	suspend fun info(): Str {
 		return Str("Test msm-user/admin/user: OK")
