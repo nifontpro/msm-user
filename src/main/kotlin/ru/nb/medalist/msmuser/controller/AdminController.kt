@@ -30,15 +30,9 @@ class AdminController(
 		@RequestBody body: RS? = null
 	): RS {
 		x++
-		return if (x % 3 == 0) throw ResponseStatusException(HttpStatus.FORBIDDEN, "AT timeout")
+		return if (x % 3 == 0) throw ResponseStatusException(HttpStatus.UNAUTHORIZED, "AT timeout")
 		else RS(res = "Admin data valid, body: ${body?.res}")
 	}
-
-	/*	@PostMapping("send")
-		fun sendMessage(@RequestBody id: Long) {
-			messageFuncActions.sendNewUserMessage(id = id)
-		}*/
-
 
 	@PostMapping("info")
 	suspend fun info(): Str {
