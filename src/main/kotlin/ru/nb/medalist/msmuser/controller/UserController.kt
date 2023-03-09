@@ -1,6 +1,5 @@
 package ru.nb.medalist.msmuser.controller
 
-//import ru.nb.medalist.msmuser.mq.MessageFuncActions
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.server.ResponseStatusException
@@ -8,9 +7,9 @@ import java.util.*
 
 @RestController
 @RequestMapping("user")
-class UserController(
-//	private val messageFuncActions: MessageFuncActions
-) {
+class UserController
+//	(private val messageFuncActions: MessageFuncActions)
+ {
 
 	@PostMapping("/uuid")
 	fun getRandomUuid(@RequestBody id: Long): String {
