@@ -9,7 +9,10 @@ import java.util.*
 @RequestMapping("user")
 class UserController
 //	(private val messageFuncActions: MessageFuncActions)
- {
+{
+
+	@GetMapping("test")
+	suspend fun test() = "Test user endpoint"
 
 	@PostMapping("/uuid")
 	fun getRandomUuid(@RequestBody id: Long): String {

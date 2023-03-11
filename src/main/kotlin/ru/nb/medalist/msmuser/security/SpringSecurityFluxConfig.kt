@@ -23,7 +23,7 @@ class SpringSecurityFluxConfig {
 	): SecurityWebFilterChain {
 
 		http.authorizeExchange()
-//			.pathMatchers("/admin/test").permitAll()
+			.pathMatchers("/user/test").permitAll()
 			.pathMatchers("/user/**").hasRole("user")
 			.pathMatchers("/admin/**").hasRole("admin")
 			.anyExchange().authenticated()
