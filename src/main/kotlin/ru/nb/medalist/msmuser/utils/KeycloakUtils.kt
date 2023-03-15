@@ -1,4 +1,4 @@
-package ru.nb.medalist.msmuser.security
+package ru.nb.medalist.msmuser.utils
 
 import org.keycloak.OAuth2Constants
 import org.keycloak.admin.client.Keycloak
@@ -95,7 +95,6 @@ class KeycloakUtils(
 			val uniqueUserResource = it[userDTO.id]
 			uniqueUserResource.update(kcUser) // обновление
 		}
-
 	}
 
 	// поиск уникального пользователя

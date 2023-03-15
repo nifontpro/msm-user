@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.server.ResponseStatusException
 import ru.nb.medalist.msmuser.dto.UserDto
-import ru.nb.medalist.msmuser.security.KeycloakUtils
+import ru.nb.medalist.msmuser.utils.KeycloakUtils
 //import ru.nb.medalist.msmuser.mq.MessageFuncActions
 import java.util.*
 
