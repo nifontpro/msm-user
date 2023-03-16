@@ -40,7 +40,7 @@ dependencies {
 //	implementation ("org.springframework.cloud:spring-cloud-starter-stream-rabbit:+")
 
 //	implementation("org.keycloak:keycloak-admin-client:${property("keycloakVersion")}")
-	implementation("org.keycloak:keycloak-admin-client:20.0.3")
+	implementation("org.keycloak:keycloak-admin-client:20.0.5")
 
 //	testImplementation("org.springframework.amqp:spring-rabbit-test")
 
