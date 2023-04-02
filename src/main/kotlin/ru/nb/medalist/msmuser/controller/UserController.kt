@@ -3,7 +3,7 @@ package ru.nb.medalist.msmuser.controller
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.server.ResponseStatusException
-import ru.nb.medalist.msmuser.utils.JwtUtils
+import ru.nb.medalist.base.utils.JwtUtils
 import java.security.Principal
 import java.util.*
 

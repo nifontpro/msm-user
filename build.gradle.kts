@@ -1,10 +1,10 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-	id("org.springframework.boot") version "3.0.3"
-	id("io.spring.dependency-management") version "1.1.0"
-	kotlin("jvm") version "1.8.0"
-	kotlin("plugin.spring") version "1.8.0"
+	id("org.springframework.boot")
+	id("io.spring.dependency-management")
+	kotlin("jvm")
+	kotlin("plugin.spring")
 }
 
 group = "ru.nb.medalist"
@@ -20,6 +20,8 @@ extra["springCloudVersion"] = "2022.0.1"
 extra["keycloakVersion"] = "20.0.3"
 
 dependencies {
+
+	implementation(project(":base"))
 
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
